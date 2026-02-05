@@ -5,13 +5,13 @@
 ```bash
 git submodule update --init --recursive
 
-cd .skills-upstream
+cd .skills-upstream/anthropics/skills
 git sparse-checkout set skills/doc-coauthoring skills/docx skills/pdf skills/pptx skills/xlsx skills/web-artifacts-builder
-cd ..
+cd ../../..
 ```
 
 ## 更新上游 skills
 
 ```bash
-git submodule update --remote .skills-upstream
+git submodule update --remote .skills-upstream/anthropics/skills
 ```
