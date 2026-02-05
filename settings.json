@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "defaultMode": "bypassPermissions"
+    },
+    "enabledPlugins": {
+        "rust-analyzer-lsp@claude-plugins-official": true,
+        "context7@claude-plugins-official": true,
+        "security-guidance@claude-plugins-official": true,
+        "ralph-loop@claude-plugins-official": true,
+        "github@claude-plugins-official": true
+    }
+}
