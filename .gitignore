@@ -1,0 +1,25 @@
+# 凭据与敏感信息
+.credentials.json
+stats-cache.json
+
+# 运行时缓存
+cache/
+debug/
+file-history/
+paste-cache/
+plans/
+session-env/
+shell-snapshots/
+statsig/
+tasks/
+telemetry/
+todos/
+
+# 历史记录
+history.jsonl
+
+# 项目特定配置
+projects/
+
+# 插件（如需版本控制可移除）
+plugins/
