@@ -12,7 +12,7 @@ git submodule update --init --recursive
 
 # 配置 sparse-checkout（只检出需要的文件夹）
 cd .skills-upstream
-git sparse-checkout set skills/doc-coauthoring skills/docx skills/pdf skills/pptx skills/xlsx
+git sparse-checkout set skills/doc-coauthoring skills/docx skills/pdf skills/pptx skills/xlsx skills/web-artifacts-builder
 cd ..
 ```
 
@@ -126,6 +126,7 @@ git commit -m "chore: 移除 submodule"
 │   ├── docx -> ../.skills-upstream/skills/docx
 │   ├── pdf -> ../.skills-upstream/skills/pdf
 │   ├── pptx -> ../.skills-upstream/skills/pptx
+│   ├── web-artifacts-builder -> ../.skills-upstream/skills/web-artifacts-builder
 │   └── xlsx -> ../.skills-upstream/skills/xlsx
 ├── settings.json              # Claude Code 设置
 └── README.md                  # 本文件
