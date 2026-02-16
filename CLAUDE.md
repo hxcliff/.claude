@@ -89,6 +89,7 @@
 
 ### Flutter/Dart
 
+- **UI 风格统一使用 Material Design 3**，`useMaterial3: true` 必须显式启用。
 - 禁止无谓 `!` 强制解包；禁止 `dynamic`（原生/JSON 边界除外，过边界立即转强类型）。
 - 明确项目选用的状态管理方案，不混用。
 - `const` 构造函数优先；列表用 builder 构造。
