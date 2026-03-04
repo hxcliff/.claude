@@ -1,6 +1,11 @@
 # 凭据与敏感信息
 .credentials.json
 stats-cache.json
+security_warnings_state_*.json
+mcp-needs-auth-cache.json
+
+# 自动备份
+backups/
 
 # 运行时缓存
 cache/
