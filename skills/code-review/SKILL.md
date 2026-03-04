@@ -2,7 +2,7 @@
 name: code-review
 description: >
   六层递进式项目代码审计（死代码 → 冗余逻辑 → 依赖健康 → 业务闭环 → 安全性 → 全局健康度）。
-  支持 Rust / Flutter / Java / JS·TS 与 Web / CLI / 前端的自由组合。
+  支持 Rust / Flutter / Java / JS·TS / Kotlin / C / C++ 与 Web / CLI / 前端的自由组合。
   当用户发送 /code-review 或提到代码审计、代码检查、死代码清理、安全审计、项目体检时触发。
 ---
 
@@ -21,6 +21,9 @@ description: >
 - Flutter / Dart
 - Java
 - JavaScript / TypeScript
+- Kotlin
+- C
+- C++
 
 **问题 2 — 项目类型（多选）**：
 - Web 服务（后端 API / 全栈）
@@ -37,6 +40,9 @@ description: >
    - Flutter / Dart → `references/lang-flutter.md`
    - Java → `references/lang-java.md`
    - JavaScript / TypeScript → `references/lang-js-ts.md`
+   - Kotlin → `references/lang-kotlin.md`
+   - C → `references/lang-c.md`
+   - C++ → `references/lang-cpp.md`
 3. **按项目类型加载**（可多个）：
    - Web 服务 → `references/type-web.md`
    - CLI → `references/type-cli.md`
