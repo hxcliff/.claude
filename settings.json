@@ -3,10 +3,25 @@
     "defaultMode": "bypassPermissions"
   },
   "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "ralph-loop@claude-plugins-official": true
+    "ralph-loop@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "claude-mem@thedotmack": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "jdtls-lsp@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true
   },
-  "skipDangerousModePermissionPrompt": true
+  "extraKnownMarketplaces": {
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "effortLevel": "high"
 }
