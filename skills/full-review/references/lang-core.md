@@ -32,6 +32,29 @@
 - 无意义的类型转换链（已是目标类型仍做转换）
 - 重复序列化/反序列化（同一数据反复编解码）
 
+## L2 过度限定路径
+
+代码中的限定路径（`::` / `.` 分隔）不应超过 **2 段**，超过须通过导入缩短。
+
+**计数方式**：从首个命名空间/模块到最终调用的函数或类型名，每个分隔符计一段。
+
+| 路径 | 段数 | 判定 |
+|------|------|------|
+| `Duration::from_secs(5)` | 2 | 合规 |
+| `fs::read_to_string(p)` | 2 | 合规 |
+| `tokio::time::sleep(d)` | 3 | 违规——应 `use tokio::time` 后写 `time::sleep(d)` |
+| `std::collections::HashMap::new()` | 4 | 违规——应导入 `HashMap` |
+| `java.util.HashMap<>` | 3 | 违规——应 `import java.util.HashMap` |
+| `std::chrono::steady_clock::now()` | 4 | 违规——应 `using` 声明缩短 |
+
+**允许例外**（不视为违规）：
+
+1. **消歧义**：同一作用域存在同名符号，需要限定路径区分来源
+2. **全文件仅一次且恰好 3 段**：只在此处用一次，导入反而增加头部噪音（4 段及以上仍须导入）
+3. **语言惯用的限定形式**：Rust trait 消歧义 `<T as Trait>::method()`、Java 注解中的全限定类名、C++ ADL 场景
+4. **枚举变体访问**：`Module::Enum::Variant` 当枚举未导入且存在命名冲突时允许 3 段
+5. **re-export / 公共 API 入口**：模块的 `pub use` / `export` 声明中使用完整路径是必要的
+
 ## L2 异步标记
 
 - 标记 async 但内部无 await 的函数（应改为同步）

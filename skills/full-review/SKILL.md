@@ -1,14 +1,14 @@
 ---
-name: code-review
+name: full-review
 description: >
   六层递进式项目代码审计（死代码 → 冗余逻辑 → 依赖健康 → 业务闭环 → 安全性 → 全局健康度）。
-  支持 Rust / Flutter / Java / JS·TS / Kotlin / C / C++ 与 Web / CLI / 前端的自由组合。
-  当用户发送 /code-review 或提到代码审计、代码检查、死代码清理、安全审计、项目体检时触发。
+  支持 Rust / Flutter / Java / JS·TS / Kotlin / C / C++ 与 Web / CLI / 前端 / Library / FFI 的自由组合。
+  当用户发送 /full-review 或提到代码审计、代码检查、死代码清理、安全审计、项目体检时触发。
 ---
 
 # Code Review Skill
 
-当用户发送 `/code-review` 或表达"审计/检查项目代码"意图时触发。
+当用户发送 `/full-review` 或表达"审计/检查项目代码"意图时触发。
 
 ## 工作流程
 
@@ -29,6 +29,8 @@ description: >
 - Web 服务（后端 API / 全栈）
 - CLI（命令行工具）
 - 前端（SPA / SSR / 移动端 UI）
+- Library（可复用库 / SDK）
+- FFI（跨语言调用 / 原生绑定）
 
 ### Step 2：加载参考文件
 
@@ -47,6 +49,8 @@ description: >
    - Web 服务 → `references/type-web.md`
    - CLI → `references/type-cli.md`
    - 前端 → `references/type-frontend.md`
+   - Library → `references/type-library.md`
+   - FFI → `references/type-ffi.md`
 
 ### Step 3：执行审计
 
