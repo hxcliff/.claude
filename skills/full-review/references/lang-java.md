@@ -1,7 +1,6 @@
 # Java 语言专项审计
 
 ## 类与对象
-- 仅一个实现的接口且无 SPI/策略模式需求（过度设计）
 - POJO/DTO/VO/Entity 字段从未被读写（含 Lombok @Data 检查）
 - 冗余继承链：中间类无自身逻辑，纯透传
 - 未使用的内部类/匿名类
@@ -19,7 +18,6 @@
 - MyBatis XML 与 Mapper 接口 SQL 不对应
 - JPA Repository 自定义方法从未被 Service 调用
 - Flyway/Liquibase 建的表无对应 Entity
-- N+1 查询；事务中某些路径未 commit/rollback
 
 ## Maven / Gradle 专有
 - 多模块重复声明 parent 已有的依赖

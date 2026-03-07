@@ -9,7 +9,6 @@
 
 ## L1 Feature / 可选依赖
 
-- 声明了但无代码引用的 feature flag / optional dependency
 - feature 之间存在隐式耦合（启用 A 必须同时启用 B 但未声明）
 - 默认 feature 集合过大，引入了多数用户不需要的依赖
 
