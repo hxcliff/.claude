@@ -12,73 +12,9 @@ description: >
 
 ## 工作流程
 
-### Step 0：上下文推断
+### Step 1：询问用户选择
 
-在询问用户之前，使用 `Glob` + `Read` 对工作目录执行轻量探测，推断语言和项目类型的默认值。核心原则：**推断不出就不填，宁缺勿错。**
-
-**1. 语言检测 — 基于配置文件存在性（高置信度）**
-
-使用 `Glob` 检查工作目录根部是否存在以下配置文件：
-
-| 配置文件 | 推断语言 |
-|----------|----------|
-| `Cargo.toml` | Rust |
-| `pubspec.yaml` | Flutter / Dart |
-| `build.gradle` 或 `build.gradle.kts` | Kotlin 或 Java（需消歧义） |
-| `pom.xml` | Java |
-| `package.json` | JavaScript / TypeScript |
-| `CMakeLists.txt` | C 或 C++（需消歧义） |
-| `build.zig` | Zig |
-| `pyproject.toml` 或 `setup.py` | Python |
-
-消歧义规则：
-- Gradle 项目：`Glob("**/*.kt")` 有结果 → Kotlin，否则 → Java
-- CMake 项目：`Glob("**/*.cpp")` 或 `Glob("**/*.cc")` 有结果 → C++，否则 → C
-
-多语言项目：同时检测到多个配置文件时，全部列入默认值。
-
-**2. 项目类型检测 — 基于依赖/结构特征（中置信度，仅在信号明确时推断）**
-
-使用 `Read` 读取步骤 1 中检测到的配置文件，扫描依赖列表中的关键词：
-
-| 信号 | 推断类型 |
-|------|----------|
-| Rust: `clap` / `structopt` 在 dependencies | CLI |
-| Rust: `axum` / `actix-web` / `rocket` / `warp` / `tower-http` | Web 服务 |
-| Rust: `pyo3` / `napi` / `wasm-bindgen` / `jni` | FFI |
-| Rust: `Cargo.toml` 只有 `[lib]` 无 `[[bin]]` | Library |
-| JS/TS: `express` / `fastify` / `koa` / `hono` / `next` | Web 服务 |
-| JS/TS: `react` / `vue` / `angular` / `svelte` | 前端 |
-| JS/TS: `commander` / `yargs` / `inquirer` | CLI |
-| Python: `flask` / `django` / `fastapi` / `starlette` | Web 服务 |
-| Python: `click` / `typer` / `argparse`（main entry） | CLI |
-| Flutter: `pubspec.yaml` 含 flutter SDK 依赖 | 前端 |
-| Java/Kotlin: `spring-boot` / `spring-web` | Web 服务 |
-| Java/Kotlin: `picocli` / `jcommander` | CLI |
-
-不推断的情况：依赖列表中无上述关键词，或信号冲突（如同时包含 Web 框架和 CLI 框架），则不设默认值。
-
-**3. 项目描述与需求文档**：不推断，始终留给用户填写。
-
-### Step 1：展示推断结果并确认
-
-根据 Step 0 的推断结果，分两种情况处理：
-
-**有推断结果时** — 先展示推断结果及依据，再让用户确认或调整。未能推断的选项仍正常提问。示例措辞：
-
-```
-检测到以下项目特征（基于工作目录配置文件）：
-- 语言：Rust（依据：存在 Cargo.toml）
-- 项目类型：Web 服务（依据：依赖中包含 axum）
-
-以上如需调整请说明。另外请补充：
-- 项目描述（可选）：简要描述项目核心业务/功能
-- 需求文档路径（可选）：如有 PRD / 功能清单，提供后启用「业务-代码对齐度」审计
-
-如无调整，回复「确认」即可继续。
-```
-
-**无推断结果时** — 退回完整提问模式，使用 `AskUserQuestion` 工具一次性问全部选项：
+使用 `AskUserQuestion` 工具，一次性问四个问题：
 
 **问题 1 — 语言（多选）**：
 - Rust
