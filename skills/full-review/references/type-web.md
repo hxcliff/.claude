@@ -23,7 +23,6 @@
 
 ## Web 安全专项
 - Cookie 未设置 HttpOnly / Secure / SameSite
-- HTTPS 未强制，HTTP 请求未自动跳转
 - WebSocket 连接未验证身份
 - URL 重定向参数未校验目标地址（开放重定向）
 - 响应头缺少安全头（X-Frame-Options / CSP / HSTS）

@@ -25,4 +25,3 @@
 ## JS/TS 安全专项
 - 动态代码执行函数使用了用户输入（如 eval 系列）
 - prototype pollution 风险：深度 merge 用户输入到对象
-- 正则表达式 ReDoS 风险：用户输入直接作为正则 pattern

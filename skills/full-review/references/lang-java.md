@@ -16,8 +16,6 @@
 
 ## 持久层
 - MyBatis XML 与 Mapper 接口 SQL 不对应
-- JPA Repository 自定义方法从未被 Service 调用
-- Flyway/Liquibase 建的表无对应 Entity
 
 ## Maven / Gradle 专有
 - 多模块重复声明 parent 已有的依赖
@@ -36,4 +34,3 @@
 - Actuator 端点未鉴权暴露到公网
 - catch 块 e.printStackTrace() 而非日志框架
 - Spring Security 部分路径被 permitAll 遗漏
-- CORS allowedOrigins("*")
