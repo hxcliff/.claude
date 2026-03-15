@@ -28,6 +28,9 @@
 - 多 profile 配置文件中完全相同的配置项
 - @Transactional 标注但方法内无写操作
 
+### 资源管理
+- AutoCloseable 资源未使用 try-with-resources（手动 try-finally 或遗漏关闭）
+
 ### 冗余模式
 - 过度 Optional 且调用方直接 .get()
 - 单线程场景的 synchronized
@@ -41,6 +44,11 @@
 - 依赖版本冲突（不同模块引入同一依赖的不同版本）
 
 ## L5 安全
+
+### 并发
+- ExecutorService 创建但未 shutdown（JVM 无法正常退出）
+- Future.get() 无超时参数（线程可能永久阻塞）
+- CompletableFuture 链未处理异常（exceptionally / handle 缺失）
 
 ### Java 安全专项
 - Actuator 端点未鉴权暴露到公网

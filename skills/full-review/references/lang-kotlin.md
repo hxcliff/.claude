@@ -66,6 +66,10 @@
 - SupervisorJob 下子协程异常未处理（未设 CoroutineExceptionHandler）
 - runBlocking 在主线程或协程内部使用（阻塞风险）
 
+### 资源管理
+
+- Closeable 资源未使用 .use {} 扩展函数（资源泄漏风险）
+
 ### Android 专项
 
 - Fragment / Activity 中直接持有长生命周期引用（内存泄漏风险）

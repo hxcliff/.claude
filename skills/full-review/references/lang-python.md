@@ -64,6 +64,9 @@
 - 异步上下文中调用阻塞 IO（未用 `asyncio.to_thread` 隔离）
 - `asyncio.create_task` 创建了但未 await 结果（fire-and-forget 无错误处理）
 
+### 资源管理
+- open() / 数据库连接 / socket 未使用 with 语句（资源泄漏风险）
+
 ### Python 安全专项
 - `eval` / `exec` 使用了用户输入
 - `subprocess` 使用 `shell=True` 且参数含用户输入

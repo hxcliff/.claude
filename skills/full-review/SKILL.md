@@ -2,7 +2,7 @@
 name: full-review
 description: >
   六层递进式项目代码审计（死代码 → 冗余逻辑 → 依赖健康 → 业务审计 → 安全性 → 全局健康度）。
-  支持 Rust / Flutter / Java / JS·TS / Kotlin / C / C++ / Zig / Python 与 Web / CLI / Frontend / Library / FFI 的自由组合。
+  支持 Rust / Flutter / Go / Java / JS·TS / Kotlin / C / C++ / Zig / Python 与 Web / CLI / Frontend / Library / FFI 的自由组合。
   当用户发送 /full-review 或提到代码审计、代码检查、死代码清理、安全审计、项目体检时触发。
 ---
 
@@ -19,6 +19,7 @@ description: >
 **问题 1 — 语言（以下选项，支持多选）**：
 - Rust
 - Flutter / Dart
+- Go
 - Java
 - JavaScript / TypeScript
 - Kotlin
@@ -42,6 +43,7 @@ description: >
 2. **按语言加载**（可多个）：
    - Rust → `references/lang-rust.md`
    - Flutter / Dart → `references/lang-flutter.md`
+   - Go → `references/lang-go.md`
    - Java → `references/lang-java.md`
    - JavaScript / TypeScript → `references/lang-js-ts.md`
    - Kotlin → `references/lang-kotlin.md`
@@ -65,14 +67,10 @@ description: >
 按照核心提示词中定义的输出格式生成报告（共 3 章节）：
 1. 审计摘要（🔴🟡🟢 分级 + 安全风险等级 + 业务审计发现数）
 2. 审计发现（所有层级合并为单一表格，序号从 1 连续自增，按 L1→L6 排列）
-3. 清理路线图（Phase 1 安全 → Phase 2 死代码 → Phase 3 架构，通过序号引用发现表）
+3. 清理路线图（Phase 1 安全与业务风险 → Phase 2 死代码与冗余清理 → Phase 3 架构与全局优化，通过序号引用发现表）
 
 如项目较大，建议分模块审计后追加跨模块依赖关系图（Mermaid），最后做跨模块汇总。
 
 ## 注意事项
 
-- 每项发现必须有文件+行号佐证，不要猜测
-- 通过反射/动态加载/插件机制使用的代码标注而非误报
-- 区分「确定无用」和「疑似无用需人工确认」
-- 安全问题宁可误报不可漏报
-- 如果用户未上传代码，提示用户上传项目文件或指定目录路径
+- 如果用户未上传代码或未指定目录路径，提示用户提供后再开始审计
